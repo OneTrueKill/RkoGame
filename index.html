@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<img id="randy" src="Randy%20Orton/randy%20running%20left.png">
+<img id="randy" src="assets/media/pictures/Randy Orton/Randy%20Orton/randy%20running%20left.png">
 
 
 <style>
@@ -20,18 +20,18 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 <script>
-    const armTaunt = `Randy%20Orton/randy%20arm%20taunt.png`,
-        armTauntFlip = `Randy%20Orton/randy%20arm%20taunt%20FLIP.png`,
-        Stare = `Randy%20Orton/Randy%20Orton%20Stare.png`,
-        pose = `Randy%20Orton/Randy%20pose.png`,
-        runningLeft = `Randy%20Orton/randy%20running%20left.png`,
-        runningRight = `Randy%20Orton/randy%20running%20right.png`,
-        screamingFLip = `Randy%20Orton/randy%20screaming%20FLIP.png`,
-        slitherFront = `Randy%20Orton/Randy%20slither%20front.png`,
-        tauntLeft = `Randy%20Orton/Randy%20taunt%20left.png`,
-        tauntRight = `Randy%20Orton/Randy%20taunt%20right.png`,
-        rko1 = `Randy%20Orton/RKO%201.png`,
-        rko2 = `Randy%20Orton/RKO%202.png`
+    const armTaunt = `assets/media/pictures/Randy Orton/Randy%20Orton/randy%20arm%20taunt.png`,
+        armTauntFlip = `assets/media/pictures/Randy Orton/Randy%20Orton/randy%20arm%20taunt%20FLIP.png`,
+        Stare = `assets/media/pictures/Randy Orton/Randy%20Orton/Randy%20Orton%20Stare.png`,
+        pose = `assets/media/pictures/Randy Orton/Randy%20Orton/Randy%20pose.png`,
+        runningLeft = `assets/media/pictures/Randy Orton/Randy%20Orton/randy%20running%20left.png`,
+        runningRight = `assets/media/pictures/Randy Orton/Randy%20Orton/randy%20running%20right.png`,
+        screamingFLip = `assets/media/pictures/Randy Orton/Randy%20Orton/randy%20screaming%20FLIP.png`,
+        slitherFront = `assets/media/pictures/Randy Orton/Randy%20Orton/Randy%20slither%20front.png`,
+        tauntLeft = `assets/media/pictures/Randy Orton/Randy%20Orton/Randy%20taunt%20left.png`,
+        tauntRight = `assets/media/pictures/Randy Orton/Randy%20Orton/Randy%20taunt%20right.png`,
+        rko1 = `assets/media/pictures/Randy Orton/Randy%20Orton/RKO%201.png`,
+        rko2 = `assets/media/pictures/Randy Orton/Randy%20Orton/RKO%202.png`
 
 
     var left = true
@@ -68,6 +68,7 @@
         }
     }
 
+
     function getMove(moveDir) {
         return () => {
             movePicture()
@@ -102,13 +103,15 @@
     }
 
     function checkKeys() {
-        document.addEventListener('keydown', (e) => {
-            keyFuncs[e.key]()
-        })
+        document.addEventListener('keydown', (e) => keyFuncs[e.key]())
     }
 
 
-    checkKeys()
+
+    $(function(){
+        //checkKeys()
+    })
+    
 
 
 </script>
