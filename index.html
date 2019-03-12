@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="randy" src="Randy%20Orton/randy%20running%20left.png">
+
+
+<style>
+    #randy {
+        width: 50%;
+        height: 50%;
+        position: absolute
+    }
+</style>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script>
+    const armTaunt = `Randy%20Orton/randy%20arm%20taunt.png`,
+        armTauntFlip = `Randy%20Orton/randy%20arm%20taunt%20FLIP.png`,
+        Stare = `Randy%20Orton/Randy%20Orton%20Stare.png`,
+        pose = `Randy%20Orton/Randy%20pose.png`,
+        runningLeft = `Randy%20Orton/randy%20running%20left.png`,
+        runningRight = `Randy%20Orton/randy%20running%20right.png`,
+        screamingFLip = `Randy%20Orton/randy%20screaming%20FLIP.png`,
+        slitherFront = `Randy%20Orton/Randy%20slither%20front.png`,
+        tauntLeft = `Randy%20Orton/Randy%20taunt%20left.png`,
+        tauntRight = `Randy%20Orton/Randy%20taunt%20right.png`,
+        rko1 = `Randy%20Orton/RKO%201.png`,
+        rko2 = `Randy%20Orton/RKO%202.png`
+
+
+    var left = true
+    var attack = false
+
+    const randy = $("#randy")
+    const moveSpeed = 10 //higher == slower movement across the screen
+    const moveDist = 30 //higher == bigger "steps"
+
+
+    const moveDirections = {
+        LEFT: "left",
+        RIGHT: "right",
+        UP: "up",
+        DOWN: "down"
+    }
+
+    const keyFuncs = {
+        ArrowRight: getMove(moveDirections.RIGHT),
+        ArrowLeft: getMove(moveDirections.LEFT),
+        ArrowUp: getMove(moveDirections.UP),
+        ArrowDown: getMove(moveDirections.DOWN),
+        f: taunt,
+        a: rkoPose
+
+    }
+
+
+    function movePicture() {
+        if (!attack) {
+            if (left) randy.attr("src", runningRight)
+            else randy.attr("src", runningLeft)
+            left = !left
+        }
+    }
+
+    function getMove(moveDir) {
+        return () => {
+            movePicture()
+            moveRandyDirection(moveDir)
+        }
+    }
+
+    function rkoPose() {
+        if (!attack) randy.attr("src", rko2)
+        else randy.attr("src", runningLeft)
+        attack = !attack
+    }
+
+
+    function taunt() {
+        let tauntArr = [armTaunt, armTauntFlip]
+        let randomTaunt = tauntArr[Math.floor(Math.random() * tauntArr.length)]
+        while (randomTaunt == randy.attr("src")) {
+            randomTaunt = tauntArr[Math.floor(Math.random() * tauntArr.length)]
+        }
+        randy.attr("src", randomTaunt)
+    }
+
+    function moveRandyDirection(direction) {
+        randy.animate({//Define directions and then select them using the param
+            [moveDirections.LEFT]: {left: `-=${moveDist}px`},
+            [moveDirections.RIGHT]: {left: `+=${moveDist}px`},
+            [moveDirections.UP]: {top: `-=${moveDist}px`},
+            [moveDirections.DOWN]: {top: `+=${moveDist}px`}
+
+        }[direction], moveSpeed)
+    }
+
+    function checkKeys() {
+        document.addEventListener('keydown', (e) => {
+            keyFuncs[e.key]()
+        })
+    }
+
+
+    checkKeys()
+
+
+</script>
+</body>
+</html>
